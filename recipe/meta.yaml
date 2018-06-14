@@ -1,6 +1,6 @@
 {% set name = "glpk" %}
 {% set version = "4.65" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% set sha256 = "4281e29b628864dfe48d393a7bedd781e5b475387c20d8b0158f329994721a10" %}
 
 package:
@@ -18,21 +18,26 @@ source:
 
 build:
    number: {{ build }}
+   run_exports:
+     # changes SONAME at minor rev.
+     - {{ pin_subpackage("glpk", max_pin="x.x") }}
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - make   # [unix]
   host:
     - gmp         # [not win]
 
   run:
+    # gmp has run exports, but we're leaving this in until conda-forge has done more of a rebuild
     - gmp         # [not win]
 
 test:
   requires:
     - {{ compiler('c') }}
-    - python 2.7            # [win and vc<14]
-    - python 3.6            # [not (win and vc<14)]
+    - python 2.7.*            # [win and vc<14]
+    - python 3.6.*            # [not (win and vc<14)]
     - setuptools
   files:
     - test.c
