@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cp -r ${BUILD_PREFIX}/share/libtool/build-aux/config.* .
+
 export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
 export CFLAGS="${CFLAGS} -O3 -I${PREFIX}/include"
 

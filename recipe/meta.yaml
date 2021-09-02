@@ -26,6 +26,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - make   # [unix]
+    - libtool  # [not win]
   host:
     - gmp         # [not win]
 
@@ -37,7 +38,8 @@ test:
   requires:
     - {{ compiler('c') }}
     - python 2.7.*            # [win and vc<14]
-    - python 3.6.*            # [not (win and vc<14)]
+    - python 3.6.*            # [not (arm64 or (win and vc<14))]
+    - python 3.8.*            # [arm64]
     - setuptools
   files:
     - test.c
