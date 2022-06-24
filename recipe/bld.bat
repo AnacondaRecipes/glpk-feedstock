@@ -8,6 +8,8 @@ set /p MAJ_MIN_VER=<temp.txt
 nmake /f Makefile_VC
 nmake /f Makefile_VC_DLL
 
+dir *.exe *.dll
+echo "version-maj-min: %MAJ_MIN_VER%"
 copy glpsol.exe %LIBRARY_BIN%
 copy ..\src\glpk.h %LIBRARY_INC%
 copy glpk.lib %LIBRARY_LIB%
