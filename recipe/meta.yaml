@@ -41,6 +41,9 @@ test:
     - {{ compiler('c') }}
     - python 3.8.*
     - setuptools
+    - cython
+    - pip
+    - wheel
   files:
     - test.c
     - setup.py
@@ -50,13 +53,16 @@ test:
 
   commands:
     # test glpsol executable
+    - echo "glpsol --mps plan.mps execution ..."
     - glpsol --mps plan.mps
 
     # test python extension using cython
-    - python setup.py develop test
+    - echo "python setup.py ..."
+    - python setup.py develop test   # [not win]
 
     # test shared library using python ctypes module
-    - python test_ctypes.py
+    - echo "python test_ctypes.py ..."
+    - python test_ctypes.py 
 
     - test -f ${PREFIX}/lib/libglpk.a        # [linux]
     - test -f ${PREFIX}/lib/libglpk.so       # [linux]
