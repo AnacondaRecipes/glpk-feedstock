@@ -1,6 +1,6 @@
 {% set name = "glpk" %}
 {% set version = "4.65" %}
-{% set build = 2 %}
+{% set build = 3 %}
 {% set sha256 = "4281e29b628864dfe48d393a7bedd781e5b475387c20d8b0158f329994721a10" %}
 
 package:
@@ -39,9 +39,7 @@ requirements:
 test:
   requires:
     - {{ compiler('c') }}
-    - python 2.7.*            # [win and vc<14]
-    - python 3.6.*            # [not (arm64 or (win and vc<14))]
-    - python 3.8.*            # [arm64]
+    - python 3.8.*
     - setuptools
   files:
     - test.c
