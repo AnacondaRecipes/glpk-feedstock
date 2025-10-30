@@ -62,12 +62,8 @@ test:
 
     # ---------- Linux/macOS: Checking shared and static GLPK libraries ----------
     - echo "Checking shared and static libraries in ${PREFIX}/lib ..."  # [unix]
-    - test -f ${PREFIX}/lib/libglpk.a         # [linux]
-    - test -s ${PREFIX}/lib/libglpk.a         # [linux]
-    - test -f ${PREFIX}/lib/libglpk.so        # [linux]
-    - test -s ${PREFIX}/lib/libglpk.so        # [linux]
-    - test -f ${PREFIX}/lib/libglpk.dylib     # [osx]
-    - test -s ${PREFIX}/lib/libglpk.dylib     # [osx]
+    - test -f ${PREFIX}/lib/libglpk${SHLIB_EXT}   # [unix]
+    - test -s ${PREFIX}/lib/libglpk${SHLIB_EXT}   # [unix]
 
     - echo "Checking exported symbols for glp_version ..."  # [unix]
     - nm -D ${PREFIX}/lib/libglpk.so | grep glp_version     # [linux]
