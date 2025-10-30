@@ -1,25 +1,20 @@
 from setuptools import setup, Extension
+from Cython.Build import cythonize
 import os
 
-library_dir = os.environ.get("LIBRARY_LIB", None)
-# On Mac and Linux LIBRARY_LIB is not defined
-if library_dir is None:
-    library_dir = os.path.join(os.environ.get("PREFIX"), 'lib')
+library_dir = os.environ.get("LIBRARY_LIB") or os.path.join(os.environ["PREFIX"], "lib")
+include_dir = os.environ.get("LIBRARY_INC") or os.path.join(os.environ["PREFIX"], "include")
 
+ext = Extension(
+    "spam",
+    sources=["spam.pyx"],
+    include_dirs=[include_dir],
+    library_dirs=[library_dir],
+    libraries=["glpk"],
+)
 
-include_dir = os.environ.get("LIBRARY_INC", None)
-# On Mac and Linux LIBRARY_INC is not defined
-if include_dir is None:
-    include_dir = os.path.join(os.environ.get("PREFIX"), 'include')
-
-
-module = Extension("spam",
-                   sources=["spam.c"],
-                   include_dirs=[include_dir],
-                   library_dirs=[library_dir],
-                   libraries=["glpk"]
-                   )
-
-setup(name="spam",
-      test_suite="spam.suite",
-      ext_modules=[module])
+setup(
+    name="spam",
+    version="0.0.0",
+    ext_modules=cythonize([ext], language_level="3"),
+)

@@ -7,7 +7,7 @@ import unittest
 
 
 def get_version():
-    return glp_version()
+    return bytes(glp_version()).decode("utf-8", "ignore")
 
 
 class Tester(unittest.TestCase):
