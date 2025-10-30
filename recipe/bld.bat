@@ -1,21 +1,3 @@
-@REM cd w%ARCH%
-@REM copy config_VC config.h
-
-@REM :: Get the major minor version info (e.g. `4_60`)
-@REM set MAJ_MIN_VER="4_65"
-@REM nmake /f Makefile_VC
-@REM nmake /f Makefile_VC_DLL
-
-@REM set MAJ_MIN_VER="4_65"
-@REM copy glpsol.exe %LIBRARY_BIN%
-@REM copy ..\src\glpk.h %LIBRARY_INC%
-@REM copy glpk.lib %LIBRARY_LIB%
-@REM copy glpk_%MAJ_MIN_VER%.dll %LIBRARY_BIN%
-@REM copy glpk_%MAJ_MIN_VER%.dll %LIBRARY_BIN%\glpk.dll
-
-@REM if errorlevel 1 exit 1
-
-
 @echo on
 cd w%ARCH%
 
