@@ -13,8 +13,11 @@ then
     export LDFLAGS="${LDFLAGS} -Wl,-rpath=${PREFIX}/lib"
 fi
 
-./configure --prefix="${PREFIX}" --with-gmp
+./configure --prefix="${PREFIX}" \
+--with-gmp \
+--disable-static \
+--enable-shared
 
-make
+make -j"${CPU_COUNT:-1}"
 make check
 make install
