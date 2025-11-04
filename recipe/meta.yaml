@@ -87,6 +87,10 @@ test:
     - echo "python test_ctypes.py ..."
     - python test_ctypes.py
 
+  # downstreams:
+  #   - cvxopt
+  #   - pulp
+
 about:
   home: https://www.gnu.org/software/glpk
   license: GPL-3.0
