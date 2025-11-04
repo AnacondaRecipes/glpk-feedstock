@@ -91,6 +91,7 @@ test:
   #   - cvxopt
   #   - pulp
 
+
 about:
   home: https://www.gnu.org/software/glpk
   license: GPL-3.0
