@@ -1,5 +1,5 @@
 @echo on
-cd w%ARCH%
+cd w64
 
 copy /Y config_VC config.h
 set "MAJ_MIN_VER=%PKG_VERSION:.=_%"
