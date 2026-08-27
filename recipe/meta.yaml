@@ -2,7 +2,7 @@
 {% set version = "4.65" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
@@ -14,7 +14,7 @@ source:
     - remove_unnecessary_warning.diff
 
 build:
-   number: 4
+   number: 5
    run_exports:
      # changes SONAME at minor rev.
      - {{ pin_subpackage("glpk", max_pin="x.x") }}
